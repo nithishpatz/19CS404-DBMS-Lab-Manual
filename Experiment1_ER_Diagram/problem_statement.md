@@ -48,25 +48,45 @@ Design a database for patient management, appointments, medical records, and bil
 # ER Diagram Submission - Student Name
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+University 
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+
+![438631459-469fcbf7-49c2-434c-9374-52161dc36bd5](https://github.com/user-attachments/assets/2523451c-a46b-4b4a-818a-a0ec2c1e56d4)
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+-COURSE: COURSE_NAME, COURSE_ID, PREREQUISITE,NO_OF_CREDITS. <br/>
+-STUDENT: REG_NO, STUDENT_NAME,EMAIL,PHONE_NO,D.O.B. <br/>
+-INSTRUCTOR:NAME,STAFF_ID,CONTACT,EMAIL,PHONE_NO. <br/>
+
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+* TEACHES:
+INSTRUCTOR teaches COURSE
+(Implies a one-to-many relationship where one instructor can teach multiple courses, but each course is taught by one instructor. Participation likely total for COURSE and partial for INSTRUCTOR).ENROLLMENT:
+* STUDENT enrolls in COURSE
+(Cardinality and Participation are not explicitly shown, but it implies a many-to-many relationship where a student can enroll in multiple courses, and each course can have multiple students. Participation is likely total for ENROLLMENT and partial for both STUDENT and COURSE).
+* PREREQUISITE:
+COURSE has PREREQUISITE
+(Reflexive relationship on COURSE, implying that a course can have one or more prerequisite courses, and can be a prerequisite for others. Likely an optional many-to-many relationship. Participation is likely partial on both sides).
+
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+
+* Prerequisite: Prerequisites are modeled through a reflexive relationship on the COURSE entity. The attribute
+PREREQUISIT (which should likely be PREREQ_ID to reference another course's ID) in the COURSE entity indicates which course(s)
+are required before taking a particular course. This structure allows for defining chains or multiple prerequisites for a single course.
+
+* Billing: Billing information is partially modeled through the FEE attribute in the STUDENT entity. This suggests that each student
+has an associated fee. However, the diagram doesn't provide details on when or how these fees are applied (e.g., per program, per
+semester, per course) or any information about payment status, due dates, or billing history. To model billing more comprehensively,
+ you might need additional entities like BILL, PAYMENT, or a more detailed structure within the REGISTRATION or a new enrollment-specific entity to track financial aspects.
+
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+This ER diagram provides a good foundation for a student registration system, capturing key entities and their relationships.
+However, depending on the specific requirements, further refinement might be needed, especially in areas like billing and a clearer
+definition of the 'TYPE' attribute in the REGISTRATION entity.
 
 ## RESULT
+Thus ENROLLMENT relationship indicates that a student can enroll in multiple courses and each course can have many students, allowing the system to track which students are taking which courses. The TEACHES relationship shows that one instructor can teach multiple courses, but each course is taught by only one instructor, assigning teaching responsibilities clearly.
