@@ -38,123 +38,187 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+-- 
+![Screenshot 2025-04-30 114151](https://github.com/user-attachments/assets/db98b05a-4f0f-4e6d-8d1b-f3c173eab25d)
 
 ```sql
--- Paste your SQL code below for Question 1
+--
+select medication_id,medication_name,dosage from Medications
+where dosage=(
+     select min(dosage) from Medications);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![Screenshot 2025-04-30 114159](https://github.com/user-attachments/assets/65d0b034-1704-4420-a79f-99d910ea8381)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- 
+![Screenshot 2025-04-30 114207](https://github.com/user-attachments/assets/e2fb59f3-85b9-45d2-8bdb-658896b3012c)
 
 ```sql
--- Paste your SQL code below for Question 2
+--
+select * from CUSTOMERS
+where SALARY>4500;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![Screenshot 2025-04-30 114215](https://github.com/user-attachments/assets/6fd561b9-6127-42e3-8feb-18248af4d963)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- 
+![Screenshot 2025-04-30 114253](https://github.com/user-attachments/assets/bee8c28b-b780-4971-8c08-9db3a1840943)
 
 ```sql
--- Paste your SQL code below for Question 3
+--
+SELECT orders.ord_no,orders.purch_amt, orders.ord_date, orders.customer_id, orders.salesman_id
+FROM orders 
+JOIN 
+    salesman ON orders.salesman_id = salesman.salesman_id
+WHERE 
+    salesman.city = 'New York';
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Screenshot 2025-04-30 114301](https://github.com/user-attachments/assets/75ca9067-8513-41e8-b418-0694d92f0cbc)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+--
+![Screenshot 2025-04-30 114311](https://github.com/user-attachments/assets/d032402e-04f7-4bcc-89dc-91c515f9260c)
 
 ```sql
--- Paste your SQL code below for Question 4
+--
+SELECT grade, COUNT(*)
+FROM customer
+GROUP BY grade
+HAVING grade > (
+    SELECT AVG(grade)
+    FROM customer
+    WHERE city = 'New York'
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Screenshot 2025-04-30 114316](https://github.com/user-attachments/assets/f220aaa2-a012-421d-8bd1-bf11245a83e3)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- 
+![Screenshot 2025-04-30 114329](https://github.com/user-attachments/assets/b4dcf211-9c18-4311-8b78-7887128831e4)
 
 ```sql
--- Paste your SQL code below for Question 5
+--
+select id,name,age,city,income from Employee 
+where age<(
+      select avg(age) from Employee
+      where income>1000000);
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Screenshot 2025-04-30 114338](https://github.com/user-attachments/assets/867572a6-e3f5-4125-ab4e-2afa8181c517)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+--
+![Screenshot 2025-04-30 114346](https://github.com/user-attachments/assets/2a51254c-10f7-4d8d-a1de-905801f58990)
 
 ```sql
--- Paste your SQL code below for Question 6
+--
+select * from CUSTOMERS
+where SALARY=1500;
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Screenshot 2025-04-30 114353](https://github.com/user-attachments/assets/4369e5ef-657f-423f-b7d7-3356889bf916)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- 
+![Screenshot 2025-04-30 114400](https://github.com/user-attachments/assets/8f0bcc69-bc63-4d74-827f-86ba868957a7)
 
 ```sql
--- Paste your SQL code below for Question 7
+--
+SELECT student_id, student_name, subject, grade
+FROM Grades
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM Grades AS g
+    WHERE g.subject = Grades.subject
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Screenshot 2025-04-30 114409](https://github.com/user-attachments/assets/49f551a6-c463-48ac-84d3-18a73c4c37cc)
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- 
+![Screenshot 2025-04-30 114418](https://github.com/user-attachments/assets/0d769c70-416d-4057-b094-9b799511a794)
 
 ```sql
--- Paste your SQL code below for Question 8
+--
+select ord_no,purch_amt,ord_date,customer_id,salesman_id from ORDERS
+where purch_amt>(
+      select avg(purch_amt ) from ORDERS
+      where ord_date ='2012-10-10');
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Screenshot 2025-04-30 114427](https://github.com/user-attachments/assets/f438ab12-3573-4644-98f1-ec09f6d592e7)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+--
+![Screenshot 2025-04-30 114434](https://github.com/user-attachments/assets/97d951c0-a9f4-4095-9b2c-4d8f141a1fab)
 
 ```sql
--- Paste your SQL code below for Question 9
+--
+select *from CUSTOMERS
+where id in(
+      select ID from customers
+      where address='Delhi' and age<30);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Screenshot 2025-04-30 114442](https://github.com/user-attachments/assets/9883fdf4-bec4-4211-b292-8154b600edfb)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- 
+![Screenshot 2025-04-30 114450](https://github.com/user-attachments/assets/07443b7a-f239-4af0-9432-fb38a8fc1209)
 
 ```sql
--- Paste your SQL code below for Question 10
+--
+select commission from salesman
+where salesman_id in(
+       select salesman_id from customer
+       where city='Paris');
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Screenshot 2025-04-30 114455](https://github.com/user-attachments/assets/6b2b1f9a-cd78-404b-8750-f4bed5471537)
+
 
 
 ## RESULT
